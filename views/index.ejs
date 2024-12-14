@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home - Tech Talk</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #1e90ff;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .file-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .file-list li {
+            padding: 10px;
+            margin-bottom: 10px;
+            background: #f0f8ff;
+            border: 1px solid #d1e7fd;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .file-list li a {
+            text-decoration: none;
+            color: #1e90ff;
+            font-weight: bold;
+        }
+
+        .file-list li a:hover {
+            color: #0d6efd;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        form input, form textarea, form button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        form button {
+            background-color: #1e90ff;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #0d6efd;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            background-color: #f4f4f9;
+            color: #888;
+            border-top: 1px solid #e4e4e4;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Tech Talk - File Manager</h1>
+</header>
+
+<div class="container">
+    <h2>Available Files</h2>
+    <ul class="file-list">
+        <% files.forEach(file => { %>
+            <li>
+                <span><%= file.name %></span>
+                <a href="/files/<%= file.name %>">View Details</a>
+            </li>
+        <% }); %>
+    </ul>
+
+    <h2>Create New File</h2>
+    <form action="/create" method="POST">
+        <label>File Name:</label>
+        <input type="text" name="name" required>
+
+        <label>Details:</label>
+        <textarea name="details" rows="4" required></textarea>
+
+        <label>Date:</label>
+        <input type="date" name="date" required>
+
+        <button type="submit">Create File</button>
+    </form>
+</div>
+
+<footer>
+    &copy; 2024 Tech Talk. All rights reserved.
+</footer>
+
+</body>
+</html>
